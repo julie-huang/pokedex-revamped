@@ -1,14 +1,34 @@
-import React from "react";
 import "./App.css";
+import { useState } from "react";
 import { PageLayout } from "./components/page-layout";
 import PokemonList from "./components/pokemon-list";
+import pokemons from "./service/pokedex.json";
+import { PokemonSearchFilters } from "./components/pokemon-search-filters";
 
-function App() {
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [pokemonList] = useState(pokemons);
+  const [typeFilter, setTypeFilter] = useState([]);
+
+  const filteredPokemonList = pokemonList.filter((pokemon) => {
+    return (
+      pokemon.name.english.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      typeFilter.every((type) => pokemon.type.includes(type))
+    );
+  });
+
   return (
     <PageLayout>
-      <PokemonList />
+      <PokemonSearchFilters
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        typeFilter={typeFilter}
+        setTypeFilter={setTypeFilter}
+      />
+      <PokemonList pokemons={filteredPokemonList} />
+      {/* //(XXX) JULIE - add no results case */}
     </PageLayout>
   );
-}
+};
 
 export default App;
