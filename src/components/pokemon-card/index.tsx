@@ -40,7 +40,7 @@ export const PokemonCard = (pokemon: PokemonProps) => {
   const image = getPokemonImage(pokemon.id, pokemon.scrollPosition);
   return (
     <Grid item width={300}>
-      <Card variant="outlined" sx={{ padding: 3 }}>
+      <Card variant="outlined" sx={{ padding: 3, backgroundColor: "#F6F4EA" }}>
         {image}
         <CardContent>
           <Typography variant="h4">{pokemon.name}</Typography>

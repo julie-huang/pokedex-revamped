@@ -26,7 +26,6 @@ const App = () => {
         setTypeFilter={setTypeFilter}
       />
       <PokemonList pokemons={filteredPokemonList} />
-      {/* //(XXX) JULIE - add no results case */}
     </PageLayout>
   );
 };

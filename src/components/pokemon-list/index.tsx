@@ -3,7 +3,9 @@ import {
   trackWindowScroll,
   ScrollPosition,
 } from "react-lazy-load-image-component";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import { PokemonCard } from "../pokemon-card";
 
 type Pokemon = {
@@ -40,19 +42,25 @@ const PokemonList = ({ scrollPosition, pokemons }: PokemonListProps) => {
       alignItems="flex-start"
       justifyContent="center"
     >
-      {pokemons.map((pokemon) => {
-        return (
-          <LazyLoadComponent scrollPosition={scrollPosition} key={pokemon.id}>
-            <PokemonCard
-              id={pokemon.id}
-              name={pokemon.name.english}
-              types={pokemon.type}
-              key={pokemon.id}
-              scrollPosition={scrollPosition}
-            />
-          </LazyLoadComponent>
-        );
-      })}
+      {pokemons.length > 0 ? (
+        pokemons.map((pokemon) => {
+          return (
+            <LazyLoadComponent scrollPosition={scrollPosition} key={pokemon.id}>
+              <PokemonCard
+                id={pokemon.id}
+                name={pokemon.name.english}
+                types={pokemon.type}
+                key={pokemon.id}
+                scrollPosition={scrollPosition}
+              />
+            </LazyLoadComponent>
+          );
+        })
+      ) : (
+        <Box py={2}>
+          <Typography>No results</Typography>
+        </Box>
+      )}
     </Grid>
   );
 };
