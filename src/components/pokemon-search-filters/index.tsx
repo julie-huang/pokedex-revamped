@@ -1,4 +1,4 @@
-import { SetStateAction } from "react";
+import { useEffect, useState, SetStateAction } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import Checkbox from "@mui/material/Checkbox";
@@ -7,10 +7,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Grid from "@mui/material/Grid";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import types from "../../service/types.json";
-
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+import { fetchPokemonTypeList, PokemonType } from "../../service";
 
 type PokemonSearchFiltersProps = {
   searchQuery: string;
@@ -23,6 +20,16 @@ export const PokemonSearchFilters = ({
   setSearchQuery,
   setTypeFilter,
 }: PokemonSearchFiltersProps) => {
+  const [typeOptions, setTypeOptions] = useState<PokemonType[]>([]);
+
+  useEffect(() => {
+    const getOptions = async () => {
+      const result = await fetchPokemonTypeList();
+      setTypeOptions(result);
+    };
+    getOptions();
+  }, []);
+
   const handleSearch = (event: { target: { value: string } }) => {
     setSearchQuery(event.target.value);
   };
@@ -56,16 +63,16 @@ export const PokemonSearchFilters = ({
           fullWidth={true}
           multiple
           id="type-filter"
-          options={types}
+          options={typeOptions}
           disableCloseOnSelect
           getOptionLabel={(option) => option.english}
           onChange={handleSelectChange}
           renderOption={(props, option, { selected }) => (
             <li {...props}>
               <Checkbox
-                icon={icon}
-                checkedIcon={checkedIcon}
-                style={{ marginRight: 8 }}
+                icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                checkedIcon={<CheckBoxIcon fontSize="small" />}
+                sx={{ marginRight: 1 }}
                 checked={selected}
                 value={option.english}
               />

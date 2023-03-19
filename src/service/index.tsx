@@ -17,12 +17,26 @@ export interface Pokemon {
   };
 }
 
-async function fetchPokemonData(): Promise<Pokemon[]> {
+export interface PokemonType {
+  english: string;
+  japanese: string;
+  chinese: string;
+}
+
+const fetchPokemonData = async (): Promise<Pokemon[]> => {
   const result = await fetch(
     "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json"
   );
   const data = await result.json();
   return data as Pokemon[];
-}
+};
 
-export { fetchPokemonData };
+const fetchPokemonTypeList = async (): Promise<PokemonType[]> => {
+  const result = await fetch(
+    "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/types.json"
+  );
+  const data = await result.json();
+  return data as PokemonType[];
+};
+
+export { fetchPokemonData, fetchPokemonTypeList };
