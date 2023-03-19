@@ -22,7 +22,6 @@ const App = () => {
       <PokemonSearchFilters
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        typeFilter={typeFilter}
         setTypeFilter={setTypeFilter}
       />
       <PokemonList pokemons={filteredPokemonList} />

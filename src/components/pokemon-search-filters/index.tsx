@@ -15,14 +15,12 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 type PokemonSearchFiltersProps = {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
-  typeFilter: string[];
   setTypeFilter: React.Dispatch<SetStateAction<never[]>>;
 };
 
 export const PokemonSearchFilters = ({
   searchQuery,
   setSearchQuery,
-  typeFilter,
   setTypeFilter,
 }: PokemonSearchFiltersProps) => {
   const handleSearch = (event: { target: { value: string } }) => {
