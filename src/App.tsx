@@ -1,7 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { PageLayout } from "./components/page-layout";
 import PokemonList from "./components/pokemon-list";
+import { CirularSpinner } from "./components/circular-spiinner";
+import { PageLayout } from "./components/page-layout";
 import { PokemonSearchFilters } from "./components/pokemon-search-filters";
 import { fetchPokemonData, Pokemon } from "./service";
 
@@ -9,6 +10,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [typeFilter, setTypeFilter] = useState([]);
+  const isReady = pokemonList.length > 0;
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -32,7 +34,11 @@ const App = () => {
         setSearchQuery={setSearchQuery}
         setTypeFilter={setTypeFilter}
       />
-      <PokemonList pokemons={filteredPokemonList} />
+      {isReady ? (
+        <PokemonList pokemons={filteredPokemonList} />
+      ) : (
+        <CirularSpinner size={100} />
+      )}
     </PageLayout>
   );
 };
