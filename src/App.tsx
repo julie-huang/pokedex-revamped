@@ -5,6 +5,7 @@ import { CirularSpinner } from "./components/circular-spiinner";
 import { PageLayout } from "./components/page-layout";
 import { PokemonSearchFilters } from "./components/pokemon-search-filters";
 import { fetchPokemonData, Pokemon } from "./service";
+import { filterPokemonListByNameAndType } from "./utils";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,12 +21,11 @@ const App = () => {
     fetchPokemon();
   }, []);
 
-  const filteredPokemonList = pokemonList.filter((pokemon) => {
-    return (
-      pokemon.name.english.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      typeFilter.every((type) => pokemon.type.includes(type))
-    );
-  });
+  const filteredPokemonList = filterPokemonListByNameAndType(
+    pokemonList,
+    searchQuery,
+    typeFilter
+  );
 
   return (
     <PageLayout>
