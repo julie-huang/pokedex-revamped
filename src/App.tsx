@@ -1,4 +1,3 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import PokemonList from "./components/pokemon-list";
 import { CirularSpinner } from "./components/circular-spiinner";
