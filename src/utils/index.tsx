@@ -1,4 +1,4 @@
-import { Pokemon } from "../service";
+import { Pokemon } from "../types";
 
 const checkPokemonNameMatch = (pokemon: Pokemon, name: string) => {
   return pokemon.name.english.toLowerCase().includes(name.toLowerCase());

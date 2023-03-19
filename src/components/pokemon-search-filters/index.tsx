@@ -7,7 +7,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Grid from "@mui/material/Grid";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { fetchPokemonTypeList, PokemonType } from "../../service";
+import { fetchPokemonTypeList } from "../../service";
+import { PokemonType } from "../../types";
 
 type PokemonSearchFiltersProps = {
   searchQuery: string;

@@ -3,8 +3,9 @@ import PokemonList from "./components/pokemon-list";
 import { CirularSpinner } from "./components/circular-spiinner";
 import { PageLayout } from "./components/page-layout";
 import { PokemonSearchFilters } from "./components/pokemon-search-filters";
-import { fetchPokemonData, Pokemon } from "./service";
+import { fetchPokemonData } from "./service";
 import { filterPokemonListByNameAndType } from "./utils";
+import { Pokemon } from "./types";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
