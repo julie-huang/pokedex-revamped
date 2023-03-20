@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project is part of a take-home assignment. The goal is to create a new Pokédex which can be from a mobile phone or desktop. You can check out here https://pokedex-revamped.web.app/
+The goal is to create a new Pokédex which can be from a mobile phone or desktop. You can check it out here: https://pokedex-revamped.web.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -16,8 +16,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Future Improvements
 
 - Loading the entire list of Pokémon is a bit cumbersome. Given a backend service, we could implement cursor pagination to load the list of Pokemon in batches when the user reaches the bottom of the screen. Right now, we're loading all the components of the Pokémon list at once with some optimization in lazy loading the images.
+- Filter and search functionaity would be faster if it was moved to the service layer
 - Skeleton loading for the pokemon cards instead of one big loading spinner
 - Better visual design for the Pokémon cards, maybe some interactivity leading to a modal with more details about the HP, attack, defense, etc.
+- End to end testing with Cypress or another alternative to test for specific user flows
+- Set up automatic deployments with CircleCI upon merging to the main branch
 
 ## Tech Stack
 
